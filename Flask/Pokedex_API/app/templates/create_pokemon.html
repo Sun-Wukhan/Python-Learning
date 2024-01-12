@@ -1,0 +1,18 @@
+<!-- app/templates/create_pokemon.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}<br>
+        {{ form.description.label }} {{ form.description() }}<br>
+        {{ form.level.label }} {{ form.level() }}<br>
+        {{ form.cuteness_rating.label }} {{ form.cuteness_rating() }}<br>
+        {{ form.submit() }}
+    </form>
+</body>
+</html>
