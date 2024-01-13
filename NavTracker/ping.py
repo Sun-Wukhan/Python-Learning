@@ -1,7 +1,7 @@
 import asyncio
 import asyncpg
 import aiohttp
-import ssl  # Import the ssl module
+import ssl  
 
 async def fetch_status(session, url):
     async with session.get(url) as response:
