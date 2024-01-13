@@ -12,7 +12,7 @@ def fetch_character_data(character_id):
 def print_character_details(character_data):
     details = ['name', 'height', 'mass', 'hair_color', 'gender']
     for detail in details:
-        print(f'{detail.title()})')
+        print(f'{detail.title()}: {character_data.get(detail,"Not Available")}')
 
 # Fetch and print details for Luke Skywalker (ID 1)
 character_data = fetch_character_data(1)
