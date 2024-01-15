@@ -2,14 +2,22 @@ import asyncio
 import asyncpg
 import aiohttp
 import ssl  
+from send_message import send_alert_message
 
 async def fetch_status(session, url):
     async with session.get(url) as response:
         
         if response.status == 200:
-            print("Everything is fine and Dandy")
+            status_body = response.reason
+            status_code = response.status
+            print(f"Response Status: {status_code} Response Body: {status_body}")  
         else: 
-            print("Something is wrong in the force")
+            status_code = response.status
+            status_reason = response.reason
+            error_body = await response.text()
+            print(f"Status: {status_code} Error Body: {error_body}")
+            send_alert_message(f"Status: {status_code} Error Body: {status_reason} Additional Details: {error_body}")
+            
             
         return response.status
     
@@ -32,8 +40,8 @@ async def monitor_website(url, db_conn):
             await asyncio.sleep(120)
 
 async def main(): 
-    db_conn = await asyncpg.connect('')
-    url = ""
+    db_conn = await asyncpg.connect('postgresql://arc:YXJjLXBzc3dk@cnpg-rw.dse.cloud.arc.ninjaneers.net:5432/arcdb')
+    url = "https://pl-acegit01.as12083.net/"
     await monitor_website(url, db_conn)
 
 if __name__ == '__main__':
