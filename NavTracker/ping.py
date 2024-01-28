@@ -41,7 +41,7 @@ async def monitor_website(url, db_conn):
 
 async def main(): 
     db_conn = await asyncpg.connect('')
-    url = "https://pl-acegit01.as12083.net/"
+    url = ""
     await monitor_website(url, db_conn)
 
 if __name__ == '__main__':
