@@ -40,7 +40,7 @@ async def monitor_website(url, db_conn):
             await asyncio.sleep(120)
 
 async def main(): 
-    db_conn = await asyncpg.connect('postgresql://arc:YXJjLXBzc3dk@cnpg-rw.dse.cloud.arc.ninjaneers.net:5432/arcdb')
+    db_conn = await asyncpg.connect('')
     url = "https://pl-acegit01.as12083.net/"
     await monitor_website(url, db_conn)
 
